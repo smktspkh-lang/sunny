@@ -1,0 +1,6 @@
+{
+  "name": "SkillBridge AI",
+  "description": "AI-powered career readiness platform for Indian college students. Know your skills, bridge skill gaps, and follow a personalized 90-day placement roadmap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
