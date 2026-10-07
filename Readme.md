@@ -1,42 +1,34 @@
+# Path-to-RegExp
 
-# escape-html
+Turn an Express-style path string such as `/user/:name` into a regular expression.
 
-  Escape string for use in HTML
+**Note:** This is a legacy branch. You should upgrade to `1.x`.
 
-## Example
+## Usage
 
-```js
-var escape = require('escape-html');
-var html = escape('foo & bar');
-// -> foo &amp; bar
+```javascript
+var pathToRegexp = require('path-to-regexp');
 ```
 
-## Benchmark
+### pathToRegexp(path, keys, options)
 
+ - **path** A string in the express format, an array of such strings, or a regular expression
+ - **keys** An array to be populated with the keys present in the url.  Once the function completes, this will be an array of strings.
+ - **options**
+   - **options.sensitive** Defaults to false, set this to true to make routes case sensitive
+   - **options.strict** Defaults to false, set this to true to make the trailing slash matter.
+   - **options.end** Defaults to true, set this to false to only match the prefix of the URL.
+
+```javascript
+var keys = [];
+var exp = pathToRegexp('/foo/:bar', keys);
+//keys = ['bar']
+//exp = /^\/foo\/(?:([^\/]+?))\/?$/i
 ```
-$ npm run-script bench
 
-> escape-html@1.0.3 bench nodejs-escape-html
-> node benchmark/index.js
+## Live Demo
 
-
-  http_parser@1.0
-  node@0.10.33
-  v8@3.14.5.9
-  ares@1.9.0-DEV
-  uv@0.10.29
-  zlib@1.2.3
-  modules@11
-  openssl@1.0.1j
-
-  1 test completed.
-  2 tests completed.
-  3 tests completed.
-
-  no special characters    x 19,435,271 ops/sec ±0.85% (187 runs sampled)
-  single special character x  6,132,421 ops/sec ±0.67% (194 runs sampled)
-  many special characters  x  3,175,826 ops/sec ±0.65% (193 runs sampled)
-```
+You can see a live demo of this library in use at [express-route-tester](http://forbeslindesay.github.com/express-route-tester/).
 
 ## License
 
